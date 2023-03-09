@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aspect Ratio Calculator</title>
+    <link rel="stylesheet" href="calc.css">
+</head>
+<body>
+    <h1>Aspect Ratio Calculator</h1>
+    <label>Ratio:</label>
+    <br>
+    <select name="ratio" id="ratio">
+        <option value="a_1_33">1.33:1 (4:3) - Old</option>
+        <option value="a_1_78">1.78:1 (16:9) - TV</option>
+        <option value="a_1_85">1.85:1</option>
+        <option value="a_1_90">1.9:1 - Digital IMAX</option>
+        <option value="a_2_00">2:1 - Netflix</option>
+        <option value="a_2_33">2.33:1 (21:9) - Cinemascope</option>
+        <option value="a_2_35">2.35:1 - Cinemascope</option>
+        <option value="a_2_37">2.37:1</option>
+        <option value="a_2_39">2.39:1</option>
+        <option value="a_custom">Custom</option>
+    </select>
+    <br>
+    <div id="a_select">
+        <br>
+        <input type="number" name="a_input_1" id="a_input_1" placeholder="2">
+        <label>:</label>
+        <input type="number" name="a_input_2" id="a_input_2" placeholder="1">
+        <br>
+    </div>
+    <br>
+    <label>Crop Factor:</label>
+    <div id="c_select">
+        <input type="number" name="c_input_1" id="c_input_1" placeholder="1.78">
+        <br>
+    </div>
+    <br>
+    <label>Pixels:</label>
+    <br>
+    <select name="pixels" id="pixels">
+        <option value="p_8k_native">8k (Native)</option>
+        <option value="p_8k_uhd">8k (UHD)</option>
+        <option value="p_6k_native">6k (Native)</option>
+        <option value="p_5k_native">5k (Native)</option>
+        <option value="p_4k_native">4k (Native)</option>
+        <option value="p_4k_uhd">4k (UHD)</option>
+        <option value="p_3k_native">3k (Native)</option>
+        <option value="p_3k_uhd">3k (UHD)</option>
+        <option value="p_2k_native">2k (Native)</option>
+        <option value="p_1080p_native">1080p (Native)</option>
+        <option value="p_720p_native">720p (Native)</option>
+        <option value="p_480p_native">480p (Native)</option>
+        <option value="p_360p_native">360p (Native)</option>
+        <option value="p_240p_native">240p (Native)</option>
+        <option value="p_144p_native">144p (Native)</option>
+        <option value="p_custom">Custom</option>
+    </select>
+    <br>
+    <div id="p_select">
+        <br>
+        <input type="number" name="p_input_1" id="p_input_1" placeholder="3840">
+        <label>x</label>
+        <input type="number" name="p_input_2" id="p_input_2" placeholder="1920">
+        <br>
+    </div>
+    <br>
+    <h3>Calculate the Crop Factor</h3>
+    <p>Calculate the crop factor by dividing the first number (before the ":") by the second number (after the ":").</p>
+    <p>Crop Factor: 16 : 9 = 1.78 (round)</p>
+    <h3>Calculate the image height</h3>
+    <p>Calculate the height of the image by dividing the width of the image (before the "x") by the crop factor.</p>
+    <p>Width: 1920</p>
+    <p>Height: 1920 : 1.78 = 1080 (round)</p>
+    <h4>Result: 1920x1080</h4>
+    <hr>
+    <p>Made by TheRockYT.</p>
+    <p><a href="https://www.therockyt.com">https://www.therockyt.com</a></p>
+    <p><a href="https://aspectratio.therockyt.com">https://aspectratio.therockyt.com</a></p>
+<script src="calc.js"></script>
+</body>
+</html>
