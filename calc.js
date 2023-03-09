@@ -2,29 +2,29 @@
 document.getElementById("a_input_1").addEventListener('change', () => {
     // ASPECT ARTIO INPUT 1 CHANGE
     setValue("ratio", "a_custom");
-    calculateFromRatio();
+    calculateFromRatio(false);
 })
 document.getElementById("a_input_2").addEventListener('change', () => {
     // ASPECT ARTIO INPUT 2 CHANGE
     setValue("ratio", "a_custom");
-    calculateFromRatio();
+    calculateFromRatio(false);
 })
 document.getElementById("c_input_1").addEventListener('change', () => {
     // CROPFACTOR CHANGE
     setValue("ratio", "a_custom");
     setValue("a_input_1", getValue("c_input_1")); // SET THE ASPECT ARTIO INPUT 1
     setValue("a_input_2", 1); // SET THE ASPECT ARTIO INPUT 2 (always 1)
-    calculateFromRatio();
+    calculateFromRatio(false);
 })
 document.getElementById("p_input_1").addEventListener('change', () => {
     // PIXELS INPUT 1 CHANGE
     setValue("pixels", "p_custom");
-    calculateFromRatio();
+    calculateFromRatio(false);
 })
 document.getElementById("p_input_2").addEventListener('change', () => {
     // PIXELS INPUT 2 CHANGE
     setValue("pixels", "p_custom");
-    calculateFromRatio();
+    calculateFromRatio(true);
 })
 
 
@@ -75,13 +75,13 @@ function matchRatio() {
             setValue("a_input_2", 1);
             break;
         case "a_custom":
-            calculateFromRatio();
+            calculateFromRatio(false);
             return;
         default:
             setValue("a_input_1", -1);
             setValue("a_input_2", -1);
     }
-    calculateFromRatio();
+    calculateFromRatio(false);
 }
 function matchPixels() {
     switch(getValue("pixels")) {
@@ -131,19 +131,23 @@ function matchPixels() {
             setValue("p_input_1", 256);
             break;
         case "p_custom":
-            calculateFromRatio();
+            calculateFromRatio(false);
             return;
         default:
             setValue("p_input_1", -1);
     }
-    calculateFromRatio();
+    calculateFromRatio(false);
 }
 
 // CALCULATE
-function calculateFromRatio() {
+function calculateFromRatio(x) {
     var ratio = getValue("a_input_1") / getValue("a_input_2");
     setValue("c_input_1", ratio);
-    setValue("p_input_2", Math.round(getValue("p_input_1") / ratio));
+    if(x){
+        setValue("p_input_1", Math.round(getValue("p_input_2") * ratio));
+    }else{
+        setValue("p_input_2", Math.round(getValue("p_input_1") / ratio));
+    }
 }
 
 // GETTERS & SETTERS
@@ -159,4 +163,4 @@ function getValue(id) {
 // STARTUP
 matchRatio();
 matchPixels();
-calculateFromRatio();
+calculateFromRatio(false);
